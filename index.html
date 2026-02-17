@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour ma Rany ❤️</title>
+    <style>
+        body { text-align: center; font-family: 'Arial', sans-serif; background-color: #ffe6e6; overflow: hidden; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        h1 { color: #ff3333; z-index: 10; padding: 20px; }
+        .heart-main { font-size: 80px; color: #ff0000; animation: beat 1s infinite; z-index: 10; }
+        @keyframes beat { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        button { padding: 15px 30px; font-size: 20px; cursor: pointer; border-radius: 20px; border: none; margin: 10px; z-index: 10; transition: 0.2s; }
+        #yes { background-color: #ffcccc; color: #ff0000; }
+        #no { background-color: #ccc; }
+        /* Style pour les petits cœurs qui tombent */
+        .falling-heart { position: absolute; top: -10%; color: #ff4d4d; animation: fall linear forwards; }
+        @keyframes fall { to { transform: translateY(110vh); } }
+    </style>
+</head>
+<body>
+    <div class="heart-main">❤️</div>
+    <h1>Veux-tu être la femme de ma vie, ma princesse et la mère de mes enfants, ma Rany ?</h1>
+    <div>
+        <button id="yes" onclick="alert('NHBK Omri! Viens sur snap et fais moi des bisous parceque twhchtek! ❤️')">Oui</button>
+        <button id="no" onmouseover="moveButton()" ontouchstart="moveButton()">Non</button>
+    </div>
+
+    <script>
+        function moveButton() {
+            var x = Math.random() * (window.innerWidth - 150);
+            var y = Math.random() * (window.innerHeight - 150);
+            var btn = document.getElementById('no');
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        // Création de la pluie de cœurs
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('falling-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.duration = Math.random() * 3 + 2 + 's';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
